@@ -1,4 +1,4 @@
-#include <Servo.h> //github test
+#include <Servo.h>
 #include "keyPad.h"
 #include "trafficLight.h"
 
