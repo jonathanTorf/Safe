@@ -14,4 +14,10 @@ class buzzer {
       delay(dr);
       noTone(buzzerPin);
     }
+
+    void playMelody(int fw[], int dr[], int size) {
+      for (int i = 0; i < size; i++) {
+        playSound(fw[i], dr[i]);
+      }
+    }
 };
