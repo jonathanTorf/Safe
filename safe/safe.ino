@@ -1,12 +1,14 @@
 #include <Servo.h>
 #include "keyPad.h"
 #include "trafficLight.h"
+#include "buzzer.h"
 
 byte rowPins[4] = {9, 8, 7, 6}; 
 byte colPins[4] = {5, 4, 3, 2}; 
 keyPad numPad(rowPins, colPins);
 trafficLight tLight(11, 13, 12);
 Servo servo;
+buzzer buzzer(1);
 
 String password = "6767";
 
@@ -16,6 +18,7 @@ void setup(){
   tLight.ledOn('r');
   servo.attach(10);
   servo.write(0);
+  buzzer.begin();
 }
   
 void loop(){
@@ -26,6 +29,7 @@ void loop(){
         tLight.setData(false, true, false);
         attempt += numPad.getKey();
         Serial.println(attempt);
+        buzzer.playSound(500, 200);
         while (numPad.keyPadPressed()) { delay(100); }
         break;
       }
